@@ -12,5 +12,6 @@ MAINTAINER 'Byeonghoon Isac Yoo <bh322yoo@gmail.com>'
 
 COPY --from=builder /tmp/wheels/* /tmp/wheels/
 RUN pip install /tmp/wheels/*.whl && rm -rf /tmp
+RUN cd root && mkdir .ssh && chmod 700 .ssh && cd /root/.ssh  && touch authorized_keys && chmod 600 authorized_keys && cd ~
 
 ENTRYPOINT ["/usr/local/bin/get_oracle_a1"]
